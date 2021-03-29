@@ -41,6 +41,7 @@ namespace SimiSoft
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gcProductos = new DevExpress.XtraGrid.GridControl();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvProductos = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colidProducto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coldescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,11 +51,10 @@ namespace SimiSoft
             this.colstock = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colmarca = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colactivo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcProductos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -100,18 +100,21 @@ namespace SimiSoft
             this.btnNuevo.Caption = "Nuevo";
             this.btnNuevo.Id = 1;
             this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNuevo_ItemClick);
             // 
             // btnModificar
             // 
             this.btnModificar.Caption = "Modificar";
             this.btnModificar.Id = 2;
             this.btnModificar.Name = "btnModificar";
+            this.btnModificar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnModificar_ItemClick);
             // 
             // btnEliminar
             // 
             this.btnEliminar.Caption = "Eliminar";
             this.btnEliminar.Id = 3;
             this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEliminar_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -158,6 +161,10 @@ namespace SimiSoft
             this.gcProductos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvProductos});
             // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataSource = typeof(SimiSoft.BML.Producto);
+            // 
             // gvProductos
             // 
             this.gvProductos.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -171,6 +178,7 @@ namespace SimiSoft
             this.colactivo});
             this.gvProductos.GridControl = this.gcProductos;
             this.gvProductos.Name = "gvProductos";
+            this.gvProductos.OptionsBehavior.Editable = false;
             this.gvProductos.OptionsView.ColumnAutoWidth = false;
             this.gvProductos.OptionsView.EnableAppearanceEvenRow = true;
             this.gvProductos.OptionsView.ShowAutoFilterRow = true;
@@ -179,7 +187,7 @@ namespace SimiSoft
             // colidProducto
             // 
             this.colidProducto.Caption = "ID";
-            this.colidProducto.FieldName = "ID";
+            this.colidProducto.FieldName = "idProducto";
             this.colidProducto.Name = "colidProducto";
             this.colidProducto.Visible = true;
             this.colidProducto.VisibleIndex = 0;
@@ -187,7 +195,7 @@ namespace SimiSoft
             // coldescripcion
             // 
             this.coldescripcion.Caption = "Descripcion";
-            this.coldescripcion.FieldName = "Descripcion";
+            this.coldescripcion.FieldName = "descripcion";
             this.coldescripcion.Name = "coldescripcion";
             this.coldescripcion.Visible = true;
             this.coldescripcion.VisibleIndex = 1;
@@ -195,7 +203,7 @@ namespace SimiSoft
             // colunidadMedida
             // 
             this.colunidadMedida.Caption = "UnidadM";
-            this.colunidadMedida.FieldName = "unidadM";
+            this.colunidadMedida.FieldName = "unidadMedida";
             this.colunidadMedida.Name = "colunidadMedida";
             this.colunidadMedida.Visible = true;
             this.colunidadMedida.VisibleIndex = 2;
@@ -203,7 +211,7 @@ namespace SimiSoft
             // colcodigo
             // 
             this.colcodigo.Caption = "Codigo";
-            this.colcodigo.FieldName = "Codigo";
+            this.colcodigo.FieldName = "codigo";
             this.colcodigo.Name = "colcodigo";
             this.colcodigo.Visible = true;
             this.colcodigo.VisibleIndex = 3;
@@ -211,7 +219,7 @@ namespace SimiSoft
             // colprecio
             // 
             this.colprecio.Caption = "Precio";
-            this.colprecio.FieldName = "Precio";
+            this.colprecio.FieldName = "precio";
             this.colprecio.Name = "colprecio";
             this.colprecio.Visible = true;
             this.colprecio.VisibleIndex = 4;
@@ -219,7 +227,7 @@ namespace SimiSoft
             // colstock
             // 
             this.colstock.Caption = "Stock";
-            this.colstock.FieldName = "Stock";
+            this.colstock.FieldName = "stock";
             this.colstock.Name = "colstock";
             this.colstock.Visible = true;
             this.colstock.VisibleIndex = 5;
@@ -227,7 +235,7 @@ namespace SimiSoft
             // colmarca
             // 
             this.colmarca.Caption = "Marca";
-            this.colmarca.FieldName = "Marca";
+            this.colmarca.FieldName = "marca";
             this.colmarca.Name = "colmarca";
             this.colmarca.Visible = true;
             this.colmarca.VisibleIndex = 6;
@@ -236,10 +244,6 @@ namespace SimiSoft
             // 
             this.colactivo.FieldName = "activo";
             this.colactivo.Name = "colactivo";
-            // 
-            // productoBindingSource
-            // 
-            this.productoBindingSource.DataSource = typeof(SimiSoft.BML.Producto);
             // 
             // frmProductos
             // 
@@ -256,8 +260,8 @@ namespace SimiSoft
             this.Text = "Productos";
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcProductos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

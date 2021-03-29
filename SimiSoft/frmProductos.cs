@@ -24,5 +24,36 @@ namespace SimiSoft
             productoBindingSource.DataSource = new Producto().GetAll();
             gvProductos.BestFitColumns();
         }
+
+        private void btnNuevo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmNMProducto()
+            {
+                Text = "Nuevo Producto"
+            }.ShowDialog();
+            productoBindingSource.DataSource = new Producto().GetAll();
+            gvProductos.BestFitColumns();
+
+        }
+
+        private void btnModificar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmNMProducto((int )gvProductos.GetFocusedRowCellValue("idProducto"))
+            {
+                Text = "Modificar Producto(" + (int)gvProductos.GetFocusedRowCellValue("idProducto") + ")"
+            }.ShowDialog();
+            productoBindingSource.DataSource = new Producto().GetAll();
+            gvProductos.BestFitColumns();
+        }
+
+        private void btnEliminar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new Producto
+            {
+                idProducto = (int)gvProductos.GetFocusedRowCellValue("idProducto")
+            }.Delete();
+            productoBindingSource.DataSource = new Producto().GetAll();
+            gvProductos.BestFitColumns();
+        }
     }
 }

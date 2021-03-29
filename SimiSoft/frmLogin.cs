@@ -35,6 +35,7 @@ namespace SimiSoft
                 }.Login()!= null)
                 {
                     XtraMessageBox.Show("Acceso correcto");
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {

@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace SimiSoft.BML
 {
-    class Proveedor
+    public class Proveedor
     {
         private DataAccess dataAccess = DataAccess.Instance();
         public int idProveedor { get; set; }
         public string nombre { get; set; }
         public string telefono { get; set; }
         public bool activo { get; set; }
+
 
         public Proveedor()
         {

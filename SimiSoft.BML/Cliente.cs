@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SimiSoft.BML
 {
-    class Cliente
+    public class Cliente
     {
         private DataAccess dataAccess = DataAccess.Instance();
         public int idCliente { get; set; }
